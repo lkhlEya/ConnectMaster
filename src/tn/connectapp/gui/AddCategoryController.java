@@ -94,6 +94,7 @@ public class AddCategoryController implements Initializable {
     private void closeCurrent(MouseEvent event1) {
         addCategoryPane.setVisible(false);
     }
+    
 
     @FXML
     private void resetCurrent(ActionEvent event) {
