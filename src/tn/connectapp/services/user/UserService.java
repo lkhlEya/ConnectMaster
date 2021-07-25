@@ -5,7 +5,6 @@
  */
 package tn.connectapp.services.user;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -85,15 +84,56 @@ public class UserService {
     
     
     public void updateUser(User u)throws SQLException{
-         String sql = "UPDATE user set FirstName where id_user=5 VALUES (?,?);";
-        PreparedStatement pre= cnx.prepareStatement(sql);
         
-        pre.setString(5,u.getFirstName());
-        pre.setString(2,u.getLastName());
-        pre.executeUpdate(sql);
-        System.out.println("UPDATE Done");
+          System.out.println(u.getFirstName()) ;
+          System.out.println(u.getLastName()) ;
+           System.out.println(u.getEmail()) ;
+            System.out.println(u.getPassword()) ;
+             System.out.println(u.getDateBirth()) ;
+              System.out.println(u.getClub()) ;
+         System.out.println( u.getGender()) ;
+         System.out.println( u.getRole()) ;
+         
+         
+         
+         
+             String req = "UPDATE user SET FirstName ='"+ u.getFirstName()+ "',LastName ='" + u.getLastName() + 
+                "', Email='" + u.getEmail() +"' ,Password='" + u.getPassword() + 
+                "', DateBirth= '" + u.getDateBirth() + "' , Club= '" + u.getClub()   + 
+                "', Gender= '" + u.getGender() + "', Role= '" + u.getRole() +
+                "' WHERE Email= '" + u.getEmail() + "' ";
+        Statement ste = cnx.createStatement();
+
+        ste.executeUpdate(req);
+         
+         
+         
+//         String sql = "UPDATE user set FirstName where id_user=5 VALUES (?,?);";
+//        PreparedStatement pre= cnx.prepareStatement(sql);
+//        
+//        pre.setString(5,u.getFirstName());
+//        pre.setString(2,u.getLastName());
+//        pre.executeUpdate(sql);
+//        System.out.println("UPDATE Done");
         
-    
+  /*  String req = "UPDATE user SET FirstName = ? ,LastName = ? ,Club = ? "
+                + "Email = ? , Password = ? , DateBirth = ? , Gender = ?"
+                + " Role = ?  WHERE Email = ? ;";
+
+        PreparedStatement pre = cnx.prepareStatement(req);
+
+        pre.setString(1, u.getFirstName());
+        pre.setString(2, u.getLastName());
+        pre.setString(3, u.getClub());
+        pre.setString(4, u.getEmail());
+        pre.setString(5, u.getPassword());
+        pre.setString(6, u.getDateBirth());
+        pre.setString(7, u.getGender());
+        pre.setString(8, u.getRole());
+        pre.setString(9, u.getEmail());
+
+       pre.executeUpdate();  
+*/
     }
     
     
