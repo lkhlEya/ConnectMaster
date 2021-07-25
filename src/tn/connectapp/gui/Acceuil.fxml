@@ -66,7 +66,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#clickAddRemboursement" prefHeight="80.0" prefWidth="140.0" styleClass="button3" stylesheets="@application.css" text="Claims" textFill="#a868a0">
+                  <Button fx:id="claimsBtn" contentDisplay="TOP" mnemonicParsing="false" onAction="#goToClaims" prefHeight="80.0" prefWidth="140.0" styleClass="button3" stylesheets="@application.css" text="Claims" textFill="#a868a0">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>

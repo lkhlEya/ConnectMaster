@@ -32,6 +32,8 @@ public class AcceuilController implements Initializable {
     private Button btnRemboursement;
     @FXML
     private Button profilebtn;
+    @FXML
+    private Button claimsBtn;
 
     /**
      * Initializes the controller class.
@@ -39,26 +41,24 @@ public class AcceuilController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void clickRemboursement(ActionEvent event) {
-        
+
         try {
-         Parent root = FXMLLoader.load(getClass().getResource("RemboursementMenu.fxml"));
-         content.getChildren().setAll(root);
+            Parent root = FXMLLoader.load(getClass().getResource("RemboursementMenu.fxml"));
+            content.getChildren().setAll(root);
         } catch (IOException ex) {
             Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-  
-
     @FXML
     private void clickAddRemboursement(ActionEvent event) {
-          try {
-         Parent root = FXMLLoader.load(getClass().getResource("RemboursementMenuEntreprise.fxml"));
-         content.getChildren().setAll(root);
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("RemboursementMenuEntreprise.fxml"));
+            content.getChildren().setAll(root);
         } catch (IOException ex) {
             Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -66,9 +66,9 @@ public class AcceuilController implements Initializable {
 
     @FXML
     private void clickHome(ActionEvent event) {
-          try {
-      Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-         content.getChildren().setAll(root);
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+            content.getChildren().setAll(root);
         } catch (Exception ex) {
             Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -76,9 +76,9 @@ public class AcceuilController implements Initializable {
 
     @FXML
     private void goToProfile(ActionEvent event) {
-      try {
-      Parent root = FXMLLoader.load(getClass().getResource("ProfileUser02.fxml"));
-         content.getChildren().setAll(root);
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("ProfileUser02.fxml"));
+            content.getChildren().setAll(root);
         } catch (Exception ex) {
             Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -86,12 +86,22 @@ public class AcceuilController implements Initializable {
 
     @FXML
     private void goToClub(ActionEvent event) {
-              try {
-      Parent root = FXMLLoader.load(getClass().getResource("ClubDataGridFXML.fxml"));
-         content.getChildren().setAll(root);
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("ClubDataGridFXML.fxml"));
+            content.getChildren().setAll(root);
         } catch (Exception ex) {
             Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    @FXML
+    private void goToClaims(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("utilisateur.fxml"));
+            content.getChildren().setAll(root);
+        } catch (Exception ex) {
+            Logger.getLogger(AcceuilController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
