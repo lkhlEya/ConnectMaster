@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,13 +21,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #FFF;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.connectapp.gui.ClubSpaceController">
+<AnchorPane id="AnchorPane" fx:id="ClubSpace" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1790.0" style="-fx-background-color: #FFF;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.connectapp.gui.ClubSpaceController">
    <children>
-      <TabPane prefHeight="1088.0" prefWidth="1928.0" rotateGraphic="true" side="RIGHT" style="-fx-tab-max-width: 330px; -fx-tab-min-width: 330px;" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="1088.0" prefWidth="1794.0" rotateGraphic="true" side="RIGHT" style="-fx-tab-max-width: 330px; -fx-tab-min-width: 330px;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="ClubData" closable="false" text="Club data">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1088.0" prefWidth="1717.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="228.0" layoutX="-3.0" layoutY="39.0" stroke="BLACK" strokeType="INSIDE" width="1912.0" AnchorPane.bottomAnchor="821.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
                            <fill>
@@ -48,30 +47,30 @@
                               </LinearGradient>
                            </fill>
                         </Rectangle>
-                        <Button fx:id="joinClub" layoutX="1544.0" layoutY="178.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="296.0" style="-fx-border-color: #FFFFFF; -fx-border-radius: 5em; -fx-background-color: transparent;" text="Join the club" visible="false">
+                        <Button fx:id="joinClub" layoutX="1413.0" layoutY="178.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="296.0" style="-fx-border-color: #FFFFFF; -fx-border-radius: 5em; -fx-background-color: transparent;" text="Join the club" visible="false">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Button>
-                        <Button fx:id="updateClub" layoutX="1542.0" layoutY="177.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="296.0" style="-fx-border-color: #FFFFFF; -fx-border-radius: 5em; -fx-background-color: transparent;" text="Update" AnchorPane.bottomAnchor="850.0" AnchorPane.leftAnchor="1542.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="177.0">
+                        <Button fx:id="updateClub" layoutX="1411.0" layoutY="177.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="296.0" style="-fx-border-color: #FFFFFF; -fx-border-radius: 5em; -fx-background-color: transparent;" text="Update" AnchorPane.bottomAnchor="850.0" AnchorPane.leftAnchor="1411.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="177.0">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Button>
-                        <Label layoutX="354.0" layoutY="275.0" prefHeight="81.0" prefWidth="280.0" text="Club name" textFill="#6b6161" AnchorPane.bottomAnchor="732.0" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="1257.0" AnchorPane.topAnchor="275.0">
+                        <Label fx:id="clubName" layoutX="354.0" layoutY="275.0" prefHeight="81.0" prefWidth="281.0" text="Club name" textFill="#6b6161" AnchorPane.bottomAnchor="732.0" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="1122.0" AnchorPane.topAnchor="275.0">
                            <font>
                               <Font name="Arial" size="53.0" />
                            </font>
                         </Label>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="216.0" layoutX="115.0" layoutY="140.0" stroke="WHITE" strokeType="INSIDE" style="-fx-effect: dropshadow(three-pass-box, #d1d0d9, 10, 0, 0, 15);" width="216.0" />
                         <ImageView fx:id="logoImage" fitHeight="218.0" fitWidth="220.0" layoutX="111.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="729.0" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="1560.0" AnchorPane.topAnchor="141.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="138.0" layoutY="412.0" stroke="#ffffffcb" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(three-pass-box, #d1d0d9, 10, 0, 10, 15);" width="1692.0" AnchorPane.bottomAnchor="510.1103515625" AnchorPane.leftAnchor="156.13671875" AnchorPane.rightAnchor="71.86328125" AnchorPane.topAnchor="438.2314453125" />
-                        <Text fill="#5a5d66" layoutX="157.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. .." wrappingWidth="1662.13671875" AnchorPane.bottomAnchor="510.1103515625" AnchorPane.leftAnchor="156.13671875" AnchorPane.rightAnchor="71.86328125" AnchorPane.topAnchor="438.2314453125">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="156.0" layoutY="438.0" stroke="#ffffffcb" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(three-pass-box, #d1d0d9, 10, 0, 10, 15);" width="1550.0" AnchorPane.bottomAnchor="450.0" AnchorPane.leftAnchor="156.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="438.0" />
+                        <Text fx:id="clubDescription" fill="#5a5d66" layoutX="156.0" layoutY="475.7685546875" strokeType="OUTSIDE" strokeWidth="0.0" text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. .." wrappingWidth="1522.13671875" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="156.0" AnchorPane.rightAnchor="71.86328125" AnchorPane.topAnchor="438.0">
                            <font>
                               <Font size="35.0" />
                            </font>
                         </Text>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="252.0" layoutX="136.0" layoutY="700.0" stroke="#ffffff83" strokeType="INSIDE" style="-fx-effect: dropshadow(three-pass-box, #d1d0d9, 10, 0, 10, 15);" width="1692.0" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="700.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="252.0" layoutX="136.0" layoutY="700.0" stroke="#ffffff83" strokeType="INSIDE" style="-fx-effect: dropshadow(three-pass-box, #d1d0d9, 10, 0, 10, 15);" width="1578.0" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="87.0" AnchorPane.topAnchor="700.0" />
                         <Text fill="#0a255a" layoutX="177.0" layoutY="753.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Univercity : " AnchorPane.bottomAnchor="328.2236328125" AnchorPane.leftAnchor="177.0" AnchorPane.rightAnchor="1575.32177734375" AnchorPane.topAnchor="723.8642578125">
                            <font>
                               <Font size="27.0" />
@@ -93,19 +92,19 @@
                            </font>
                         </Text>
                         <Pane layoutX="142.0" layoutY="371.0" prefHeight="245.0" prefWidth="1352.0" style="-fx-background-insets: 20 10 15 80; -fx-rotate: -3; -fx-background-color: #051232; -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 15);" visible="false" />
-                        <Hyperlink fx:id="mail" layoutX="397.0" layoutY="169.0" prefHeight="51.0" prefWidth="276.0" text="connect@connect.tn" AnchorPane.bottomAnchor="868.0" AnchorPane.leftAnchor="397.0" AnchorPane.rightAnchor="1218.0" AnchorPane.topAnchor="169.0">
+                        <Hyperlink fx:id="mail" layoutX="397.0" layoutY="169.0" prefHeight="51.0" prefWidth="236.0" text="connect@connect.tn" AnchorPane.bottomAnchor="868.0" AnchorPane.leftAnchor="397.0" AnchorPane.rightAnchor="1124.0" AnchorPane.topAnchor="169.0">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Hyperlink>
                         <ImageView fitHeight="36.0" fitWidth="30.0" layoutX="359.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="881.0" AnchorPane.leftAnchor="359.0" AnchorPane.rightAnchor="1502.0" AnchorPane.topAnchor="177.0">
                            <image>
-                              <Image url="@../../media/icons8_Open_Envelope_32px.png" />
+                              <Image url="@../media/icons8_Open_Envelope_32px.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="36.0" fitWidth="26.0" layoutX="359.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="837.0979995727539" AnchorPane.leftAnchor="359.0" AnchorPane.rightAnchor="1506.0" AnchorPane.topAnchor="223.0">
                            <image>
-                              <Image url="@../../media/648-6483874_phone-phone-icon-grey-png.png" />
+                              <Image url="@../media/648-6483874_phone-phone-icon-grey-png.png" />
                            </image>
                         </ImageView>
                         <Text fx:id="phoneNumber" fill="WHITE" layoutX="409.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number" AnchorPane.bottomAnchor="840.98046875" AnchorPane.leftAnchor="408.52734375" AnchorPane.rightAnchor="1351.47265625" AnchorPane.topAnchor="220.41796875">
@@ -140,16 +139,11 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="joinClub1" layoutX="1576.0" layoutY="60.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="296.0" text="Join the club">
+                        <Button fx:id="joinClub1" layoutX="1420.0" layoutY="58.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="296.0" text="Join the club">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="universitytf1" editable="false" prefHeight="37.0" prefWidth="924.0" promptText="University ...">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextField>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="University">
                            <font>
                               <Font size="22.0" />

@@ -8,12 +8,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="addCategoryPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.connectapp.gui.AddCategoryController">
+<AnchorPane id="AnchorPane" fx:id="addCategoryPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1790.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.connectapp.gui.AddCategoryController">
         <children>
-      <Pane prefHeight="1084.0" prefWidth="1924.0" style="-fx-background-color: black; -fx-opacity: 70%;" />
-      <Pane fx:id="addCategrytf" layoutX="754.0" layoutY="329.0" prefHeight="374.0" prefWidth="366.0" style="-fx-background-color: #FFF;">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b4" height="1088.0" layoutX="-4.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" width="1796.0" />
+      <Pane fx:id="addCategrytf" layoutX="700.0" layoutY="308.0" prefHeight="374.0" prefWidth="366.0" style="-fx-background-color: #FFF;">
          <children>
             <Button fx:id="resetCateButton" layoutX="199.0" layoutY="303.0" mnemonicParsing="false" onAction="#resetCurrent" prefHeight="31.0" prefWidth="135.0" style="-fx-background-color: #051232;" text="Reset" textFill="WHITE">
                <font>
@@ -38,7 +39,7 @@
             <TextArea fx:id="catedescriptiontf" layoutX="33.0" layoutY="151.0" prefHeight="131.0" prefWidth="301.0" promptText="Description ..." />
             <ImageView fx:id="exittf" fitHeight="12.0" fitWidth="13.0" layoutX="339.0" layoutY="15.0" onMouseClicked="#closeCurrent" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 70%;">
                <image>
-                  <Image url="@../../media/1200px-Grey_close_x.svg.png" />
+                  <Image url="@../media/1200px-Grey_close_x.svg.png" />
                </image>
             </ImageView>
          </children>

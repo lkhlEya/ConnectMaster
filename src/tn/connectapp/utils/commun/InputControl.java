@@ -112,6 +112,8 @@ public class InputControl {
                 break;
                 case "501" : alert.setHeaderText( "your request to update the "+param1+" is sent successfully.");
                 break;
+                case "502" : alert.setHeaderText( "your request to join the club "+param1+" is sent successfully.");
+                break;
             }
             
          if (!isNull(param3))

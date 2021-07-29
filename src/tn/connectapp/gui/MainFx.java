@@ -40,7 +40,7 @@ public class MainFx extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("StartPage1.fxml"));
             
             //Scene scene = new Scene(root, 750, 420);
-            Scene scene = new Scene(root, 1200, 700);
+            Scene scene = new Scene(root, 1920, 1080);
             primaryStage.setTitle("Hello World!");
             primaryStage.setScene(scene);
             primaryStage.show();

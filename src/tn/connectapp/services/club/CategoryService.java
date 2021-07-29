@@ -21,7 +21,6 @@ public class CategoryService {
 
     public void createCategory(Category c) throws SQLException {
 
-        try {
             String req = "INSERT INTO category (category_name,creation_date, creation_user,	"
                     + "status, description) values ('" + c.getCategoryName() + "','" + c.getCreationDate() + "','"
                     + c.getCreationUser() + "','" + c.getStatus() + "','" + c.getDescription() + "');";
@@ -31,14 +30,11 @@ public class CategoryService {
 
             System.out.println("Values Inserted");
 
-        } catch (SQLException e) {
-            System.out.println("Problem while Inserting in category" + e.getMessage());
-        }
+
     }
 
     public void updateCategory(Category updateEntity) throws SQLException {
 
-        try {
 
             String req = "UPDATE category SET category_name = ? , "
                     + "creation_date = ? , creation_user = ? ,status = ?"
@@ -57,14 +53,11 @@ public class CategoryService {
 
             System.out.println("Values Updated");
 
-        } catch (SQLException e) {
-            System.out.println("Problem while Updating category" + e.getMessage());
-        }
+
     }
 
     public boolean deleteCategory(Long idCategory) throws SQLException {
 
-        try {
             String req = "UPDATE Category SET status = 'HEXP' WHERE category_id = ? ;";
 
             PreparedStatement pre = cnx.prepareStatement(req);
@@ -74,16 +67,13 @@ public class CategoryService {
             if (pre.executeUpdate() == 1) {
                 return true;
             }
-        } catch (SQLException e) {
-            System.out.println("Problem While Deleting from Category" + e.getMessage());
-        }
+
 
         return false;
     }
 
     public boolean validateCategory(Long idCategory) throws SQLException {
 
-        try {
             String req = "UPDATE Category SET status = 'EXPL' WHERE category_id = ? ;";
 
             PreparedStatement pre = cnx.prepareStatement(req);
@@ -93,9 +83,6 @@ public class CategoryService {
             if (pre.executeUpdate() == 1) {
                 return true;
             }
-        } catch (SQLException e) {
-            System.out.println("Problem While Validating from Category" + e.getMessage());
-        }
 
         return false;
     }
@@ -103,7 +90,6 @@ public class CategoryService {
     public List<Category> ReadListCategory(String status) throws SQLException {
         List<Category> categories = new ArrayList<>();
 
-        try {
             String sql = "SELECT c.*,(select concat(u.FirstName,' ',u.LastName)"
                     + " From user u where c.creation_user = u.id_user) user_name FROM Category c";
             if (!InputControl.isNull(status)) {
@@ -127,9 +113,7 @@ public class CategoryService {
                 categories.add(category);
 
             }
-        } catch (SQLException e) {
-            System.out.println("Problem while Selecting from Category" + e.getMessage());
-        }
+
 
         return categories;
     }
@@ -137,7 +121,6 @@ public class CategoryService {
     public Category ReadCategoryByReference(Long idCategory, String categoryName) throws SQLException {
         Category category = new Category();
         String sql = new String();
-        try {
 
             if (idCategory != null) {
                 sql = "SELECT c.*,(select concat(u.FirstName,' ',u.LastName)"
@@ -161,10 +144,7 @@ public class CategoryService {
                 }
             }
 
-        } catch (SQLException e) {
-            System.out.println("Problem while Selecting from ClubHistory" + e.getMessage());
 
-        }
 
         return category;
     }

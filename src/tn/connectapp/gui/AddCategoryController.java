@@ -61,9 +61,6 @@ public class AddCategoryController implements Initializable {
 
    @FXML
     public void addCategory(ActionEvent event) {
-        String name = "";
-        String description = "";
-        String category = "";
         Long currentUser = 1234566L;
 
         Date sysdate = new Date(System.currentTimeMillis());

@@ -12,17 +12,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="updatePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.connectapp.gui.UpdateClubController">
+<AnchorPane id="AnchorPane" fx:id="updatePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1790.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.connectapp.gui.UpdateClubController">
     <children>
       <Pane prefHeight="1084.0" prefWidth="1924.0" style="-fx-background-color: black; -fx-opacity: 70%;" />
-        <AnchorPane id="AnchorPane" layoutX="619.0" layoutY="50.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;">
+        <AnchorPane id="AnchorPane" layoutX="609.0" layoutY="50.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;">
             <children>
                 <Button fx:id="resetButton" layoutX="52.0" layoutY="855.0" mnemonicParsing="false" onAction="#resetClubForm" prefHeight="45.0" prefWidth="552.0" style="-fx-background-color: #051232;" text="Reset" textFill="WHITE">
                     <font>
                         <Font size="21.0" />
                     </font>
                 </Button>
-                <Button fx:id="UpdateButton" layoutX="53.0" layoutY="788.0" mnemonicParsing="false" onAction="#addClub" prefHeight="45.0" prefWidth="549.0" style="-fx-background-color: #051232;" text="Update" textFill="WHITE">
+                <Button fx:id="UpdateButton" layoutX="53.0" layoutY="788.0" mnemonicParsing="false" onAction="#UpdateClub" prefHeight="45.0" prefWidth="549.0" style="-fx-background-color: #051232;" text="Update" textFill="WHITE">
                     <font>
                         <Font size="21.0" />
                     </font>
@@ -70,7 +70,7 @@
                 </TextField>
                 <ImageView fx:id="exittf1" fitHeight="24.0" fitWidth="19.0" layoutX="618.0" layoutY="19.0" onMouseClicked="#closeCurrentUpdate" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 50%;">
                     <image>
-                        <Image url="@../../media/1200px-Grey_close_x.svg.png" />
+                        <Image url="@../media/1200px-Grey_close_x.svg.png" />
                     </image>
                 </ImageView>
                 <Button fx:id="addLogoButtom" layoutX="433.0" layoutY="678.0" mnemonicParsing="false" onAction="#AddClubLogo" prefHeight="37.0" prefWidth="175.0" text="Choose a logo" />

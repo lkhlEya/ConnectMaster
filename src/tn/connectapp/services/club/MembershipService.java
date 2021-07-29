@@ -23,7 +23,6 @@ public class MembershipService {
 
     public void createMembership(Membership m) throws SQLException {
 
-        try {
             String req = "INSERT INTO Membership (post_id,club_id,status,membership_date,manager_id,member_id) values ('"
                     + m.getPostId() + "','" + m.getClubId() + "','" + m.getStatus() + "','" + m.getMembershipDate() + "','"
                     + m.getManagerId() + "','" + m.getMemberId() + "');";
@@ -33,14 +32,11 @@ public class MembershipService {
 
             System.out.println("Values Inserted");
 
-        } catch (SQLException e) {
-            System.out.println("Problem while Inserting in Membership");
-        }
+
     }
 
     public void updateMembership(Membership updateEntity) throws SQLException {
 
-        try {
 
             String req = "UPDATE Membership SET post_id = ? ,club_id = ? , "
                     + "status = ? , membership_date = ? , manager_id = ? "
@@ -60,14 +56,11 @@ public class MembershipService {
 
             System.out.println("Values Updated");
 
-        } catch (SQLException e) {
-            System.out.println("Problem while Updating membership");
-        }
+ 
     }
 
     public boolean deleteMembership(Long idMembership) throws SQLException {
 
-        try {
             String req = "UPDATE Membership SET status = 'HEXP' WHERE Membership_id = ? ;";
 
             PreparedStatement pre = cnx.prepareStatement(req);
@@ -77,9 +70,7 @@ public class MembershipService {
             if (pre.executeUpdate() == 1) {
                 return true;
             }
-        } catch (SQLException e) {
-            System.out.println("Problem While Deleting from Membership" + e.getMessage());
-        }
+
 
         return false;
     }
@@ -87,7 +78,6 @@ public class MembershipService {
     public List<Membership> ReadListMembership() throws SQLException {
         List<Membership> memberships = new ArrayList<>();
 
-        try {
             String sql = "SELECT m.*,(select concat(u.FirstName,' ',u.LastName)"
                     + " From user u where m.manager_id = u.id_user) manager_name,"
                     + "(select concat(u1.FirstName,' ',u1.LastName)"
@@ -115,16 +105,13 @@ public class MembershipService {
                 memberships.add(membership);
 
             }
-        } catch (SQLException e) {
-            System.out.println("Problem while Selecting from Membership" + e.getMessage());
-        }
+
 
         return memberships;
     }
 
     public Membership ReadMembership(Long idMembership) throws SQLException {
         Membership membership = new Membership();
-        try {
             String sql = "SELECT * FROM Membership WHERE membership_id = " + idMembership + ";";
             Statement ste = cnx.createStatement();
             ResultSet rs = ste.executeQuery(sql);
@@ -139,17 +126,13 @@ public class MembershipService {
 
             }
 
-        } catch (SQLException e) {
-            System.out.println("Problem while Selecting from ClubHistory " + e.getMessage());
 
-        }
 
         return membership;
     }
 
     public List<Membership> ReadMembersClub(Long idClub) throws SQLException {
         List<Membership> memberships = new ArrayList<>();
-        try {
             String sql = "SELECT * FROM Membership WHERE club_id = " + idClub + ";";
             Statement ste = cnx.createStatement();
             ResultSet rs = ste.executeQuery(sql);
@@ -168,10 +151,6 @@ public class MembershipService {
 
             }
 
-        } catch (SQLException e) {
-            System.out.println("Problem while Selecting from ClubHistory");
-
-        }
 
         return memberships;
     }
@@ -209,7 +188,6 @@ public class MembershipService {
             sql = InputControl.isNull(status) ? sql + " AND status = 'EXPL';" : sql + " AND status = '" + status + "';";
             System.out.println(sql);
 
-            try {
                 Statement ste = cnx.createStatement();
                 ResultSet rs = ste.executeQuery(sql);
                 while (rs.next()) {
@@ -227,10 +205,7 @@ public class MembershipService {
 
                 }
 
-            } catch (SQLException e) {
-                System.out.println("Problem while Selecting from ClubHistory");
 
-            }
 
         }
         return memberships;

@@ -58,6 +58,24 @@ public class Club {
         check = new CheckBox();
 
     }
+    
+    public Club(Club copy)
+    {
+        this.setIdClub(copy.getIdClub());
+        this.setInstitue(copy.getInstitue());
+        this.setName(copy.getName());
+        this.setStatus(copy.getStatus());
+        this.setUniversity(copy.getUniversity());
+        this.setDescription(copy.getDescription());
+        this.setCategory(copy.getCategory());
+        this.setCreationDate(copy.getCreationDate());
+        this.setLogo(copy.getLogo());
+        this.setPhoneNumber(copy.getPhoneNumber());
+        this.setEmail(copy.getEmail());
+        this.setCreationUser(copy.getCreationUser());
+        this.setAddDate(copy.getAddDate());
+        check = new CheckBox();
+    }
 
     public Club() {
         check = new CheckBox();

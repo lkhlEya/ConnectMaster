@@ -29,7 +29,6 @@ public class ClubService {
         String req = "INSERT INTO CLUB (university, institue, description,category,"
                 + "creation_date,email,phone_number,name,logo,creation_user,add_date)"
                 + " values (?,?,?,?,?,?,?,?,?,?,?);";
-        try {
             PreparedStatement pre = cnx.prepareStatement(req);
             pre.setString(1, c.getUniversity());
             pre.setString(2, c.getInstitue());
@@ -47,32 +46,25 @@ public class ClubService {
 
             System.out.println("Values Inserted");
 
-        } catch (Exception ex) {
-            System.out.println("Problem " + ex.getMessage());
-        }
+
     }
 
     public void updateClubStatus(Long idClub, String status) throws SQLException {
 
-        try {
             String req = "UPDATE CLUB SET status = ? WHERE id_club = ? ;";
             PreparedStatement pre = cnx.prepareStatement(req);
             pre.setString(1, status);
             pre.setLong(2, idClub);
 
             pre.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println("Problem while Updating CLUB status");
-        }
+
     }
 
     public void updateClub(Club updateEntity) throws SQLException {
-
-        try {
+        
             String req = "UPDATE CLUB SET university = ? ,institue = ? , "
                     + "description = ? , category = ? , creation_date = ? "
                     + " , email = ? , phone_number = ?, logo = ?  WHERE id_club = ? ;";
-
             PreparedStatement pre = cnx.prepareStatement(req);
 
             pre.setString(1, updateEntity.getUniversity());
@@ -84,19 +76,16 @@ public class ClubService {
             pre.setLong(7, updateEntity.getPhoneNumber());
             pre.setString(8, updateEntity.getLogo());
             pre.setLong(9, updateEntity.getIdClub());
-
+            System.out.println(pre);
             pre.executeUpdate();
 
             System.out.println("Values Updated");
 
-        } catch (SQLException e) {
-            System.out.println("Problem while Updating CLUB" + e.getMessage());
-        }
+
     }
 
     public boolean deleteClub(long idClub) throws SQLException {
 
-        try {
             String req = "UPDATE CLUB SET status = 'HEXP' WHERE id_club = ? ;";
 
             PreparedStatement pre = cnx.prepareStatement(req);
@@ -106,9 +95,7 @@ public class ClubService {
             if (pre.executeUpdate() == 1) {
                 return true;
             }
-        } catch (SQLException e) {
-            System.out.println("Problem While Deleting from CLUB" + e.getMessage());
-        }
+
 
         return false;
     }
@@ -116,7 +103,6 @@ public class ClubService {
     public List<Club> ReadListClub(String status) throws SQLException {
         List<Club> clubs = new ArrayList<>();
 
-        try {
             String sql = "SELECT c.*,(select concat(u.FirstName,' ',u.LastName)"
                     + " From user u where c.creation_user = u.id_user) user_name FROM CLUB c ";
             if (!InputControl.isNull(status)) {
@@ -145,17 +131,13 @@ public class ClubService {
                 clubs.add(club);
 
             }
-        } catch (SQLException e) {
-            System.out.println("Problem while Selecting from CLUB" + e.getMessage());
 
-        }
 
         return clubs;
     }
 
     public Club ReadClub(Long idClub) throws SQLException {
         Club club = new Club();
-        try {
             String sql = "SELECT c.*,(select concat(u.FirstName,' ',u.LastName)"
                     + " From user u where c.creation_user = u.id_user) user_name FROM CLUB c WHERE id_club = " + idClub + ";";
             Statement ste = cnx.createStatement();
@@ -176,10 +158,7 @@ public class ClubService {
 
             }
 
-        } catch (SQLException e) {
-            System.out.println("Problem while Selecting from CLUB" + e.getMessage());
 
-        }
 
         return club;
     }
@@ -220,7 +199,6 @@ public class ClubService {
 
         System.out.println(sql);
 
-        try {
             Statement ste = cnx.createStatement();
             ResultSet rs = ste.executeQuery(sql);
             while (rs.next()) {
@@ -241,11 +219,6 @@ public class ClubService {
 
                 clubs.add(club);
             }
-
-        } catch (SQLException e) {
-            System.out.println("Problem while Selecting from CLUB" + e.getMessage());
-
-        }
 
         return clubs;
     }
@@ -264,7 +237,6 @@ public class ClubService {
         sql += "OR description like '%" + Key + "%'";
         sql += "OR creation_date like '%" + Key + "%')";
         System.out.println(sql);
-        try {
             Statement ste = cnx.createStatement();
             ResultSet rs = ste.executeQuery(sql);
             while (rs.next()) {
@@ -285,11 +257,6 @@ public class ClubService {
 
                 clubs.add(club);
             }
-
-        } catch (SQLException e) {
-            System.out.println("Problem while Selecting from CLUB" + e.getMessage());
-
-        }
 
         return clubs;
     }

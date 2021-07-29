@@ -8,8 +8,6 @@ package tn.connectapp.gui;
 import tn.connectapp.entities.user.User;
 
 
-import com.oracle.webservices.internal.api.message.PropertySet.Property;
-import com.sun.deploy.uitoolkit.impl.fx.ui.FXConsole;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -26,7 +24,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import org.omg.CORBA.portable.ValueFactory;
 
 /**
  * FXML Controller class

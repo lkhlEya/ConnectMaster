@@ -55,32 +55,19 @@ import tn.connectapp.utils.commun.MyConnection;
 public class ProfileUserController implements Initializable {
 
     @FXML
-    private AnchorPane APtitleProf;
-    @FXML
     private ImageView imgProfile;
     @FXML
-    private Hyperlink hlClub;
-    @FXML
     private ImageView logprofile;
-    @FXML
-    private Hyperlink hlEvent;
-    @FXML
-    private Hyperlink hlClaim;
-    @FXML
-    private Hyperlink hlHome;
     @FXML
     private AnchorPane APeditProf;
     @FXML
     private Text fNameProf;
     @FXML
-    private ImageView iconeEdit;
-    @FXML
     private Button inserImgProf;
     @FXML
     private Button insertCv;
     @FXML
-    private Hyperlink editProf;
-    @FXML
+    private Button editProf;
     private Button btnClose;
     @FXML
     private Text lastNameProf;
@@ -119,6 +106,8 @@ public class ProfileUserController implements Initializable {
      public Connection cnx ;
      public  PreparedStatement pst;
      public   ResultSet rs;
+    @FXML
+    private Button btnClose1;
     /**
      * Initializes the controller class.
      */

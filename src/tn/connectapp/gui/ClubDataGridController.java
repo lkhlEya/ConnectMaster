@@ -17,7 +17,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -30,6 +29,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -38,7 +38,8 @@ import tn.connectapp.entities.club.Club;
 import tn.connectapp.services.club.CategoryService;
 import tn.connectapp.services.club.ClubService;
 import tn.connectapp.utils.commun.InputControl;
-
+import javafx.fxml.FXMLLoader;
+import tn.connectapp.entities.user.User;
 
 /**
  * FXML Controller class
@@ -169,12 +170,10 @@ public class ClubDataGridController implements Initializable {
     @FXML
     private MenuItem Activateaction;
 
-    @FXML
-    private ImageView exitsearchfiltre;
-
     private String status;
 
     public ObservableList<Club> clubList = FXCollections.observableArrayList();
+    User currentUser;
 
     void setStatus(ActionEvent event) {
 
@@ -315,27 +314,30 @@ public class ClubDataGridController implements Initializable {
     @FXML
     void updateList(ActionEvent event) throws IOException {
 
-        if (checkEmptyList(1, "Update")== 1) {
+        if (checkEmptyList(1, "Update") == 1) {
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateClubFXML.fxml"));
+            AnchorPane pane = loader.load();
 
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("UpdateClubFXML.fxml"));
-        pane.setUserData(getSelectedlist().get(0));
-        GridRootPane.getChildren().set(7, pane);
+            UpdateClubController clubController = loader.getController();
+            clubController.getUserData(getSelectedlist().get(0));
+            GridRootPane.getChildren().set(7, pane);
+
         }
     }
 
     @FXML
     void rejectList(ActionEvent event) {
 
-        if (checkEmptyList(0, "Reject")== 1) {
+        if (checkEmptyList(0, "Reject") == 1) {
 
-        for (Club item : getSelectedlist()) {
-            try {
-                cs.deleteClub(item.getIdClub());
-            } catch (SQLException ex) {
-                InputControl.genAlert("301", "ERROR", "Club", item.getName(), "").show();
+            for (Club item : getSelectedlist()) {
+                try {
+                    cs.deleteClub(item.getIdClub());
+                } catch (SQLException ex) {
+                    InputControl.genAlert("301", "ERROR", "Club", item.getName(), "").show();
+                }
             }
-        }
         }
     }
 
@@ -507,6 +509,23 @@ public class ClubDataGridController implements Initializable {
         selectingdch.setCellValueFactory(new PropertyValueFactory<Club, Boolean>("check"));
 
         activClubs.setItems(clubList);
+    }
+
+    @FXML
+    private void showClub(MouseEvent event) throws IOException {
+        if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("clubSpaceFXML.fxml"));
+            AnchorPane pane = loader.load();
+
+            ClubSpaceController clubController = loader.getController();
+            clubController.getUserData(activClubs.getSelectionModel().getSelectedItem());
+
+            GridRootPane.getChildren().set(7, pane);
+        }
+    }
+
+    void getUserData(User currrentUser) {
+        currentUser = new User(currrentUser);
     }
 
 }

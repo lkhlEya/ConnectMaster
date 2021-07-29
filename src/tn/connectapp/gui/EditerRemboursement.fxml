@@ -6,9 +6,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="content" prefHeight="563.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.connectapp.gui.EditerRemboursementController">
+<AnchorPane id="AnchorPane" fx:id="content" prefHeight="1080.0" prefWidth="1790.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.connectapp.gui.EditerRemboursementController">
    <children>
-      <Button fx:id="edit" layoutX="357.0" layoutY="483.0" mnemonicParsing="false" onAction="#modifierDemande" prefHeight="26.0" prefWidth="91.0" text="Modifier" />
+      <Button fx:id="edit" layoutX="41.0" layoutY="483.0" mnemonicParsing="false" onAction="#modifierDemande" prefHeight="26.0" prefWidth="428.0" stylesheets="@application.css" text="Modifier" />
       <Label layoutX="62.0" layoutY="34.0" text="Nom" />
       <Label layoutX="61.0" layoutY="76.0" text="Club" />
       <Label layoutX="59.0" layoutY="117.0" text="Email" />
@@ -21,6 +21,6 @@
       <TextField fx:id="Tville" layoutX="139.0" layoutY="161.0" prefHeight="26.0" prefWidth="324.0" promptText="Ville" />
       <TextField fx:id="Ttelephone" layoutX="139.0" layoutY="199.0" prefHeight="26.0" prefWidth="324.0" promptText="GSM" />
       <TextArea fx:id="Tdemande" layoutX="141.0" layoutY="245.0" prefHeight="200.0" prefWidth="324.0" promptText="Demande" />
-      <Button fx:id="btnCancel" layoutX="223.0" layoutY="483.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="91.0" text="Annuler" />
+      <Button fx:id="btnCancel" layoutX="42.0" layoutY="521.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="428.0" stylesheets="@application.css" text="Annuler" />
    </children>
 </AnchorPane>

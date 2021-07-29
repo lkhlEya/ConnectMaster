@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -56,10 +57,6 @@ public class SignInController implements Initializable {
     @FXML
     private Pane pane2;
     @FXML
-    private Label textEmail;
-    @FXML
-    private Label textPassWord;
-    @FXML
     private Text titleLogIn;
     @FXML
     private Hyperlink hlForgotPassword;
@@ -67,43 +64,40 @@ public class SignInController implements Initializable {
     private Button btnLog;
     @FXML
     private AnchorPane carre;
-    @FXML
-    private AnchorPane APLogo;
-    @FXML
-    private ImageView logoLgIn;
-    
+
     private UserService us;
     @FXML
     private TextField TFEmail;
     @FXML
     private PasswordField tfPassword;
     @FXML
-    private Button btnFermer;
-    
-   
-      Connection cnx ;
-      PreparedStatement pst;
-      ResultSet rs;
-      
+    private ImageView btnFermer;
+
+    Connection cnx;
+    PreparedStatement pst;
+    ResultSet rs;
+    @FXML
+    private ImageView background;
+    @FXML
+    private ImageView tfLogo;
+    @FXML
+    private Button btnReset;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        cnx =     MyConnection.getInstance().getCnx();
-     //   us = new UserService();
-        
-    }    
+        cnx = MyConnection.getInstance().getCnx();
+        //   us = new UserService();
 
-
+    }
 
     @FXML
     private void ButtonLogIn(ActionEvent event) throws IOException {
-        
-      
-     
-      /*   FXMLLoader root = new FXMLLoader(getClass().getResource("ProfileUser02.fxml"));
+
+        /*   FXMLLoader root = new FXMLLoader(getClass().getResource("ProfileUser02.fxml"));
                         Parent parent = root.load();
                        // TFEmail.getScene().setRoot(parent);
        ProfileUserController PUControler = root.getController();
@@ -111,25 +105,22 @@ public class SignInController implements Initializable {
        Stage  stage = new Stage();
        stage.setScene(new Scene(parent));
        stage.show();
-       */
-        
-        
-         String Email = TFEmail.getText();
-         String Password = tfPassword.getText();
-         System.out.println(Email );
-         System.out.println(Password );
-         
-           String query = "SELECT * FROM connect.user WHERE `Email` = ? AND `Password` = ?";
-           
-           
-          if (Email.trim().equals("")) {
+         */
+        String Email = TFEmail.getText();
+        String Password = tfPassword.getText();
+        System.out.println(Email);
+        System.out.println(Password);
+
+        String query = "SELECT * FROM connect.user WHERE `Email` = ? AND `Password` = ?";
+
+        if (Email.trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Enter Your Email", "Empty Username", 2);
         } else if (Password.trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Enter Your Password", "Empty Password", 2);
-        }  else {
+        } else {
 
             try {
-               // Maconnexion con = new Maconnexion();
+                // Maconnexion con = new Maconnexion();
                 pst = cnx.prepareStatement(query);
 
                 pst.setString(1, Email);
@@ -138,31 +129,38 @@ public class SignInController implements Initializable {
 
                 if (rs.next()) {
 
-                 
-                   FXMLLoader root = new FXMLLoader(getClass().getResource("Acceuil.fxml"));
-                        Parent parent = root.load();
-                       // TFEmail.getScene().setRoot(parent);
-               
-                  /*        FXMLLoader root = new FXMLLoader(getClass().getResource("../commun/Acceuil.fxml"));
+                    User current = new User();
+
+                    current.setId_user(rs.getInt("id_user"));
+                    current.setFirstName(rs.getString("FirstName"));
+                    current.setLastName(rs.getString("LastName"));
+                    current.setEmail(rs.getString("Email"));
+                    current.setGender(rs.getString("Gender"));
+                    current.setClub(rs.getString("Club"));
+                    current.setDateBirth(rs.getDate("DateBirth").toString());
+                    current.setRole(rs.getString("Role"));
+
+                    FXMLLoader root = new FXMLLoader(getClass().getResource("Acceuil.fxml"));
+                    Parent parent = root.load();
+                 //   TFEmail.getScene().setRoot(parent);
+
+                    /*        FXMLLoader root = new FXMLLoader(getClass().getResource("../commun/Acceuil.fxml"));
             Parent parent = root.load();
-            TFEmail.getScene().setRoot(parent);
-            
-       ProfileUserController PUControler = root.getController();
-       PUControler.myFunction(TFEmail.getText());*/
-       Stage  stage = new Stage();
-       stage.setScene(new Scene(parent));
-       stage.show();
-                    
-                      /*  FXMLLoader root = new FXMLLoader(getClass().getResource("ProfileUser02.fxml"));
+            TFEmail.getScene().setRoot(parent);*/
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    AcceuilController PUControler = root.getController();
+                    PUControler.getUserData(current);
+                    // Stage  stage = new Stage();
+                    stage.setScene(new Scene(parent));
+                    stage.show();
+
+                    /*  FXMLLoader root = new FXMLLoader(getClass().getResource("ProfileUser02.fxml"));
                         Parent parent = root.load();
                         TFEmail.getScene().setRoot(parent);
-                    */
-                 //  root.getNamespace().put(TFEmail.getText(), );
-                 
+                     */
+                    //  root.getNamespace().put(TFEmail.getText(), );
 //                SignInControllerController sic = root.getController();
 //                sic.setRef(u.getRef());
-               
-
                 } else {
                     // error message
                     JOptionPane.showMessageDialog(null, "Invalid Username / Password", "Login Error", 2);
@@ -173,11 +171,10 @@ public class SignInController implements Initializable {
             }
 
         }
-         
+
 //
 //              showMessageDialog(null, "TEST Button"+textPassWord.getText());
-              
-     /*         String username=TFEmail.getText();
+        /*         String username=TFEmail.getText();
               String password=tfPassword.getText();
                     
 
@@ -186,20 +183,18 @@ public class SignInController implements Initializable {
              }
              else
                  
-            */
-
-        }
-
+         */
+    }
 
     @FXML
     private void HLForgotPW(ActionEvent event) {
     }
 
     @FXML
-    private void ActionFermer(ActionEvent event) {
-           // showMessageDialog(null, "TEST Button");
-        
-         try {
+    private void ActionFermer(Event event) {
+        // showMessageDialog(null, "TEST Button");
+
+        try {
             FXMLLoader root = new FXMLLoader(getClass().getResource("StartPage1.fxml"));
             Parent parent = root.load();
             btnFermer.getScene().setRoot(parent);
@@ -207,17 +202,11 @@ public class SignInController implements Initializable {
             System.out.println(ex);
         }
     }
-    
+
+    @FXML
+    private void ResetForm(ActionEvent event) {
+        TFEmail.setText("");
+        tfPassword.setText("");
+    }
 
 }
-
-
-        
-        
-        
-        
-    
-
-    
-    
-

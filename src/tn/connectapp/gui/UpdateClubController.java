@@ -11,6 +11,10 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -25,6 +30,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
+import tn.connectapp.entities.club.Category;
 import tn.connectapp.entities.club.Club;
 import tn.connectapp.services.club.CategoryService;
 import tn.connectapp.services.club.ClubService;
@@ -79,13 +85,27 @@ public class UpdateClubController implements Initializable {
     private Pane addCategrytf;
     private TextField categorynametf;
     private TextArea catedescriptiontf;
-
+    Long clubId ;
+    Club currentClub;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        cs = new ClubService();
+        cats = new CategoryService();
+        ObservableList<String> list = FXCollections.observableArrayList();
+        try
+        {
+            for (Category cat : cats.ReadListCategory("EXPL")) {
+                list.add(cat.getCategoryName());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddClubFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        categorytf.setItems(list);
+        creationdatetf.setValue(InputControl.asLocalDate(sysdate));
     }    
 
     @FXML
@@ -98,9 +118,7 @@ public class UpdateClubController implements Initializable {
         logoFile.setText("");
     }
 
-    @FXML
-    private void addClub(ActionEvent event) {
-    }
+
 
     @FXML
     private void showaddCategory(ActionEvent event) throws IOException {
@@ -123,20 +141,24 @@ public class UpdateClubController implements Initializable {
         }
     }
 
+    @FXML
     void UpdateClub(ActionEvent event) {
 
                String currentUser = "Me";
         Date creationDate;
+                    System.out.println("Entity before update"+currentClub.toString());
 
         System.out.println("creationdatetf.toString() : " + creationdatetf.getValue());
-        if (categorytf.getSelectionModel().isEmpty()) {
-            InputControl.genAlert("103", "ERROR", "Category", "", "").show();
-        } else if (null == creationdatetf.getValue()) {
+        if (!categorytf.getSelectionModel().isEmpty()) {
+            currentClub.setCategory(categorytf.getValue().toString());
+        }
+        if (!InputControl.isNull(logoFile.getText())) {
+            currentClub.setLogo(logoFile.getText());
+        } 
+         if (null == creationdatetf.getValue()) {
             InputControl.genAlert("101", "ERROR", "Creation date", "", "").show();
         } else if (InputControl.isNull(emailtf.getText())) {
             InputControl.genAlert("101", "ERROR", "Email", "", "").show();
-        } else if (InputControl.isNull(logoFile.getText())) {
-            InputControl.genAlert("103", "Logo", "", "", "").show();
         } else {
             if (!InputControl.valiemail(emailtf.getText())) {
                 InputControl.genAlert("204", "ERROR", emailtf.getText(), "", "").show();
@@ -145,8 +167,9 @@ public class UpdateClubController implements Initializable {
             } else {
                 try {
                     creationDate = InputControl.asDate(creationdatetf.getValue());
-                    cs.updateClub(new Club(null, nametf.getText(), universitytf.getText(), establishmenttf.getText(), "ETUD", descriptiontf.getText(),
-                            categorytf.getValue().toString(), creationDate, logoFile.getText(), Long.parseLong(phonenumbertf.getText()), emailtf.getText(),123456L,sysdate)
+                    System.out.println(creationDate.toString());
+                    cs.updateClub(new Club(clubId, nametf.getText(), universitytf.getText(), establishmenttf.getText(), currentClub.getStatus(), descriptiontf.getText(),
+                            currentClub.getCategory(), creationDate, currentClub.getLogo(), Long.parseLong(phonenumbertf.getText()), emailtf.getText(),currentClub.getCreationUser(),currentClub.getAddDate())
                     );
 
                     System.out.println("Update OK!!");
@@ -159,6 +182,23 @@ public class UpdateClubController implements Initializable {
 
             }
         }
+
+    }
+
+    void getUserData(Club clubData) {
+       currentClub = new Club(clubData);
+       clubId = currentClub.getIdClub();
+        System.out.println(currentClub.toString());
+        nametf.setText(clubData.getName());
+        universitytf.setText(clubData.getUniversity());
+        establishmenttf.setText(clubData.getInstitue());
+        categorytf.setValue(clubData.getCategory());
+        categorytf.getSelectionModel().select(clubData.getCategory());
+        creationdatetf.setValue(InputControl.asLocalDate(clubData.getCreationDate()));
+        emailtf.setText(clubData.getEmail());
+        phonenumbertf.setText(clubData.getPhoneNumber().toString());
+        descriptiontf.setText(clubData.getDescription());
+
 
     }
     

@@ -12,55 +12,63 @@ import java.sql.Date;
  * @author Wissal
  */
 public class User {
+
     private int id_user;
     private String FirstName;
     private String LastName;
     private String Club;
     private String Email;
     private String Password;
-  //  private Date DateBirth ;
-    private String DateBirth ;
+    //  private Date DateBirth ;
+    private String DateBirth;
     private String Gender;
     private String Role;
-    
-    
-       public User () {
-    }
-  
 
-    public User( String FirstName, String LastName, String Club, String Email, String Password, String DateBirth, String Gender ) {
-      //  this.id_user = id_user;
+    public User() {
+    }
+
+    public User(User user) {
+        this.setClub(user.getClub());
+        this.setDateBirth(user.getDateBirth());
+        this.setEmail(user.getEmail());
+        this.setFirstName(user.getFirstName());
+        this.setGender(user.getGender());
+        this.setId_user(user.getId_user());
+        this.setLastName(user.getLastName());
+        this.setRole(user.getRole());
+    }
+
+    public User(String FirstName, String LastName, String Club, String Email, String Password, String DateBirth, String Gender) {
+        //  this.id_user = id_user;
         this.FirstName = FirstName;
         this.LastName = LastName;
         this.Club = Club;
         this.Email = Email;
         this.Password = Password;
-        this.DateBirth= DateBirth;
-        this.Gender= Gender;
-        
+        this.DateBirth = DateBirth;
+        this.Gender = Gender;
+
     }
 
     public User(String FirstName, String LastName) {
-       this.FirstName = FirstName;
+        this.FirstName = FirstName;
         this.LastName = LastName;
     }
-    public User( int id_user, String FirstName, String LastName) {
-      
+
+    public User(int id_user, String FirstName, String LastName) {
+
         this.id_user = id_user;
         this.FirstName = FirstName;
         this.LastName = LastName;
     }
 
-   
-  
-       public String getDateBirth() {
+    public String getDateBirth() {
         return DateBirth;
     }
 
     public void setDateBirth(String DateBirth) {
         this.DateBirth = DateBirth;
     }
-    
 
     public int getId_user() {
         return id_user;
@@ -110,14 +118,12 @@ public class User {
         this.Password = Password;
     }
 
-  //  public Date getDateBirth() {
+    //  public Date getDateBirth() {
     //    return DateBirth;
     //}
-
     //public void setDateBirth(Date DateBirth) {
-      //  this.DateBirth = DateBirth;
+    //  this.DateBirth = DateBirth;
     //}
-
     public String getGender() {
         return Gender;
     }
@@ -125,6 +131,7 @@ public class User {
     public void setGender(String Gender) {
         this.Gender = Gender;
     }
+
     public String getRole() {
         return Role;
     }
@@ -133,16 +140,9 @@ public class User {
         this.Role = Role;
     }
 
-
-
     @Override
     public String toString() {
         return "User{" + "id_user=" + id_user + ", FirstName=" + FirstName + ", LastName=" + LastName + ", Club=" + Club + ", Email=" + Email + ", Password=" + Password + ", DateBirth=" + DateBirth + ", Gender=" + Gender + ", Role=" + Role + '}';
     }
 
-    
 }
-    
-   
-    
-

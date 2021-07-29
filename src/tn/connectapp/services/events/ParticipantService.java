@@ -5,7 +5,7 @@
  */
 package tn.connectapp.services.events;
 
-import Entities.Participant;
+import tn.connectapp.entities.events.Participant;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
