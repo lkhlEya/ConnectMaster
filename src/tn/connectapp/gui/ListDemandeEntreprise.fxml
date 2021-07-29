@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="1080.0" prefWidth="1790.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.connectapp.gui.ListDemandeEntrepriseController">
    <children>
-      <TableView fx:id="tabView" layoutX="10.0" layoutY="65.0" prefHeight="358.0" prefWidth="1252.0">
+      <TableView fx:id="tabView" layoutX="-2.0" layoutY="291.0" prefHeight="782.0" prefWidth="1784.0">
         <columns>
           <TableColumn fx:id="colDate" prefWidth="111.19998455047607" text="Date" />
             <TableColumn fx:id="colNom" prefWidth="112.79998779296875" text="Nom" />
@@ -21,8 +21,11 @@
           <TableColumn fx:id="colDemande" prefWidth="394.4000244140625" text="Demande" />
             <TableColumn fx:id="colAction" minWidth="0.0" prefWidth="192.0" text="Actions" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
-      <Button fx:id="btnSearch" layoutX="864.0" layoutY="26.0" minWidth="40.0" mnemonicParsing="false" onAction="#clickSearch" prefHeight="30.0" prefWidth="40.0">
+      <Button fx:id="btnSearch" layoutX="864.0" layoutY="26.0" minWidth="40.0" mnemonicParsing="false" onAction="#clickSearch" prefHeight="54.0" prefWidth="60.0">
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -31,6 +34,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <TextField fx:id="editSearch" layoutX="536.0" layoutY="29.0" prefHeight="26.0" prefWidth="315.0" promptText="Chercher" />
+      <TextField fx:id="editSearch" layoutX="536.0" layoutY="29.0" prefHeight="54.0" prefWidth="323.0" promptText="Chercher" />
    </children>
 </AnchorPane>
