@@ -13,17 +13,17 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.connectapp.gui.StartPage">
     <children>
-        <ImageView fx:id="background" fitHeight="1086.0" fitWidth="1972.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="background" fitHeight="1170.0" fitWidth="1986.0" layoutX="-2.0" layoutY="-46.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../media/Homepage.png" />
+                <Image url="@../media/52952295299.png" />
             </image>
         </ImageView>
-        <Button fx:id="btnRN" layoutX="265.0" layoutY="715.0" mnemonicParsing="false" onAction="#btnRegister" prefHeight="81.0" prefWidth="305.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 3px;" stylesheets="@application.css" text="Register Now" textFill="WHITE">
+        <Button fx:id="btnRN" layoutX="192.0" layoutY="715.0" mnemonicParsing="false" onAction="#btnRegister" prefHeight="81.0" prefWidth="305.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 3px;" stylesheets="@application.css" text="Register Now" textFill="WHITE">
             <font>
                 <Font size="27.0" />
             </font>
         </Button>
-        <Text fx:id="tfText1" layoutX="208.0" layoutY="552.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Active job offers. Active recruiters." textAlignment="CENTER" wrappingWidth="595.0">
+        <Text fx:id="tfText1" layoutX="135.0" layoutY="552.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Active job offers. Active recruiters." textAlignment="CENTER" wrappingWidth="595.0">
             <font>
                 <Font size="33.0" />
             </font>
@@ -44,7 +44,7 @@
                 </LinearGradient>
             </fill>
         </Text>
-        <Text fx:id="tfText11" layoutX="243.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO CONNECT" wrappingWidth="690.0">
+        <Text fx:id="tfText11" layoutX="170.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO CONNECT" wrappingWidth="690.0">
             <fill>
                 <LinearGradient endX="0.2142857142857143" endY="0.3285714285714285">
                     <stops>
@@ -67,14 +67,14 @@
         </Text>
         <Pane layoutX="-11.0" layoutY="-20.0" prefHeight="205.0" prefWidth="1938.0">
             <children>
-                <ImageView fx:id="tfLogo" fitHeight="123.0" fitWidth="440.0" layoutX="1496.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="tfLogo" fitHeight="103.0" fitWidth="369.0" layoutX="1579.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../media/BluesGreyGradient.png" />
+                        <Image url="@../media/greyLogo.png" />
                     </image>
                 </ImageView>
             </children>
         </Pane>
-        <Button fx:id="btnSign" layoutX="614.0" layoutY="715.0" mnemonicParsing="false" onAction="#SignIn" prefHeight="81.0" prefWidth="305.0" style="-fx-background-color: transparent; -fx-border-color: White; -fx-border-width: 3px;" stylesheets="@application.css" text="Log In" textFill="WHITE">
+        <Button fx:id="btnSign" layoutX="541.0" layoutY="715.0" mnemonicParsing="false" onAction="#SignIn" prefHeight="81.0" prefWidth="305.0" style="-fx-background-color: transparent; -fx-border-color: White; -fx-border-width: 3px;" stylesheets="@application.css" text="Log In" textFill="WHITE">
             <font>
                 <Font size="27.0" />
             </font>

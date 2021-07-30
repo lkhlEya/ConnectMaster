@@ -9,11 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -139,11 +135,6 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="joinClub1" layoutX="1420.0" layoutY="58.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="296.0" text="Join the club">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Button>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="University">
                            <font>
                               <Font size="22.0" />
@@ -156,23 +147,77 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1052.0" prefWidth="1891.0">
                      <children>
-                        <GridPane layoutX="234.0" layoutY="216.0" prefHeight="662.0" prefWidth="1462.0" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="195.0">
-                          <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
+                        <Pagination fx:id="pagination" layoutX="2.0" layoutY="94.0" prefHeight="903.0" prefWidth="1790.0" />
+                        <AnchorPane layoutX="254.0" layoutY="237.0">
                            <children>
-                              <Pane prefHeight="508.0" prefWidth="1492.0" />
-                              <Pane prefHeight="508.0" prefWidth="1492.0" />
-                              <Pane prefHeight="508.0" prefWidth="1492.0" GridPane.columnIndex="1" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="507.0" layoutX="879.0" stroke="#ffffffcb" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(three-pass-box, #d1d0d9, 10, 0, 10, 15);" width="390.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="507.0" layoutX="437.0" layoutY="140.0" stroke="#ffffffcb" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(three-pass-box, #d1d0d9, 10, 0, 10, 15);" width="390.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="507.0" layoutY="41.0" stroke="#ffffffcb" strokeType="INSIDE" strokeWidth="0.0" style="-fx-effect: dropshadow(three-pass-box, #d1d0d9, 10, 0, 10, 15);" width="390.0" />
+                              <ImageView fx:id="photo1" fitHeight="150.0" fitWidth="200.0" layoutX="125.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../media/0A255AUser.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fx:id="name2" layoutX="565.0" layoutY="384.892578125" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name + Last Name">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fx:id="photo2" fitHeight="150.0" fitWidth="200.0" layoutX="564.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../media/0A255AUser.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="photo3" fitHeight="150.0" fitWidth="200.0" layoutX="999.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../media/0A255AUser.png" />
+                                 </image>
+                              </ImageView>
+                              <Text fx:id="name1" layoutX="124.0" layoutY="283.892578125" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name + Last Name">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="name3" layoutX="997.0" layoutY="260.892578125" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name + Last Name">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="role1" layoutX="177.0" layoutY="310.6552734375" strokeType="OUTSIDE" strokeWidth="0.0" text="ROLE">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="role2" layoutX="617.0" layoutY="417.6552734375" strokeType="OUTSIDE" strokeWidth="0.0" text="ROLE">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="role3" layoutX="1049.0" layoutY="292.6552734375" strokeType="OUTSIDE" strokeWidth="0.0" text="ROLE">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="description1" layoutX="77.0" layoutY="356.05078125" strokeType="OUTSIDE" strokeWidth="0.0" text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. .." textAlignment="JUSTIFY" wrappingWidth="248.314453125" />
+                              <Text fx:id="description2" layoutX="517.0" layoutY="469.05078125" strokeType="OUTSIDE" strokeWidth="0.0" text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. .." textAlignment="JUSTIFY" wrappingWidth="248.314453125" />
+                              <Text fx:id="description3" layoutX="954.0" layoutY="351.05078125" strokeType="OUTSIDE" strokeWidth="0.0" text=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. .." textAlignment="JUSTIFY" wrappingWidth="248.314453125" />
                            </children>
-                        </GridPane>
-                        <TilePane layoutX="562.0" layoutY="292.0" prefHeight="200.0" prefWidth="200.0" />
-                        <Pagination fx:id="pagination" prefHeight="1055.0" prefWidth="1888.0" />
+                        </AnchorPane>
+                        <Button fx:id="joinClub1" layoutX="1455.0" layoutY="19.0" mnemonicParsing="false" onAction="#joinClub" prefHeight="59.0" prefWidth="220.0" style="-fx-background-radius: 50;" text="Join the club">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="98.0" fitWidth="336.0" layoutX="16.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../media/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="MembersManagement" layoutX="1465.0" layoutY="29.0" mnemonicParsing="false" onAction="#membersManagement" prefHeight="59.0" prefWidth="220.0" style="-fx-background-radius: 50;" text="Members Management">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
                      </children></AnchorPane>
             </content>
           </Tab>
