@@ -22,8 +22,12 @@ import org.apache.commons.net.ftp.FTPReply;
 public class FTPUploader {
     
     FTPClient ftp = null;
+    String host = "localhost"; 
+    String user = "lkhlEya";
+    String pwd = "root";
 	
-	public FTPUploader(String host, String user, String pwd) throws Exception{
+	public FTPUploader() throws Exception{
+            
 		ftp = new FTPClient();
 		ftp.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
 		int reply;
@@ -54,13 +58,13 @@ public class FTPUploader {
 			}
 		}
 	}
-	public static void main(String[] args) throws Exception {
+	public void ftpUpload(String filePath, String fileName) throws Exception {
 		System.out.println("Start");
-		FTPUploader ftpUploader = new FTPUploader("localhost", "lkhlEya", "root");
 		//FTP server path is relative. So if FTP account HOME directory is "/home/pankaj/public_html/" and you need to upload 
 		// files to "/home/pankaj/public_html/wp-content/uploads/image2/", you should pass directory parameter as "/wp-content/uploads/image2/"
-		ftpUploader.uploadFile("C:\\DEV\\ConnectProjectMaster - Copy\\src\\tn\\connectapp\\media\\051232User.png", "image.png", "/");
-		ftpUploader.disconnect();
+		//ftpUploader.uploadFile("C:\\DEV\\ConnectProjectMaster - Copy\\src\\tn\\connectapp\\media\\051232User.png", "image.png", "/");
+		uploadFile(filePath, fileName, "/");
+                disconnect();
 		System.out.println("Done");
 	}
 

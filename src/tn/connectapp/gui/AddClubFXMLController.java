@@ -46,8 +46,8 @@ import tn.connectapp.entities.club.Category;
 import tn.connectapp.entities.club.Club;
 import tn.connectapp.services.club.CategoryService;
 import tn.connectapp.services.club.ClubService;
+import tn.connectapp.utils.club.FTPUploader;
 import tn.connectapp.utils.commun.InputControl;
-
 
 /**
  * FXML Controller class
@@ -59,15 +59,14 @@ public class AddClubFXMLController implements Initializable {
     private ClubService cs;
     private CategoryService cats;
     Date sysdate = new Date(System.currentTimeMillis());
-    
-        @FXML
+
+    @FXML
     private AnchorPane CreateClubPane;
 
     private String currentUser;
 
     @FXML
     private Button resetButton;
-
 
     @FXML
     private TextField nametf;
@@ -106,18 +105,20 @@ public class AddClubFXMLController implements Initializable {
 
     private Pane addCategrytf;
 
-
     @FXML
     private Button addLogoButtom;
 
     @FXML
     private TextField logoFile;
-    
-    
+
     @FXML
     private Button saveButton;
 
+    String filepathtext;
+    String selectedFile;
+    String extension;
 
+    FTPUploader ftpUploader;
 
     /**
      * Initializes the controller class.
@@ -127,8 +128,7 @@ public class AddClubFXMLController implements Initializable {
         cs = new ClubService();
         cats = new CategoryService();
         ObservableList<String> list = FXCollections.observableArrayList();
-        try
-        {
+        try {
             for (Category cat : cats.ReadListCategory("EXPL")) {
                 list.add(cat.getCategoryName());
             }
@@ -140,7 +140,6 @@ public class AddClubFXMLController implements Initializable {
         creationdatetf.setValue(InputControl.asLocalDate(sysdate));
 
     }
-    
 
     @FXML
     public void addClub(ActionEvent event) {
@@ -180,8 +179,7 @@ public class AddClubFXMLController implements Initializable {
                 try {
                     creationDate = InputControl.asDate(creationdatetf.getValue());
                     cs.createClub(new Club(null, nametf.getText(), universitytf.getText(), establishmenttf.getText(), "ETUD", descriptiontf.getText(),
-                            categorytf.getValue().toString(), creationDate, logoFile.getText(), Long.parseLong(phonenumbertf.getText()), emailtf.getText(),123456L,sysdate)
-                    );
+                            categorytf.getValue().toString(), creationDate, logoFile.getText(), Long.parseLong(phonenumbertf.getText()), emailtf.getText(), 123456L, sysdate));
 
                     System.out.println("INSERTION OK!!");
                     InputControl.genAlert("500", "CONFIRMATION", "Club", "", "").show();
@@ -190,6 +188,20 @@ public class AddClubFXMLController implements Initializable {
                     InputControl.genAlert("300", "ERROR", "", "", ex.getMessage()).show();
 
                 }
+                
+                try {
+                    String clubid = cs.ReadClub(null, nametf.getText()).getIdClub().toString();
+                    System.out.println(clubid);
+                    System.out.println(filepathtext);
+                    System.out.println(extension);
+                    ftpUploader = new FTPUploader();
+                    ftpUploader.ftpUpload(filepathtext,  clubid+ extension);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddClubFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(AddClubFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
 
             }
         }
@@ -203,16 +215,21 @@ public class AddClubFXMLController implements Initializable {
         CreateClubPane.getChildren().set(2, pane);
     }
 
-
- 
-
     @FXML
     void AddClubLogo(ActionEvent event) {
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().addAll(new ExtensionFilter("Choose an image", "*.tif", "*.tiff", "*.bmp", "*.jpg", "*.jpeg", "*.gif", "*.png", "*.eps", "*.raw", "*.cr2", "*.nef", "*.orf", "*.sr2"));
-        File selectedFile = fc.showOpenDialog(null);
-        if (selectedFile != null) {
-            logoFile.setText(selectedFile.getName());
+        File file = fc.showOpenDialog(null);
+
+        if (file != null) {
+            selectedFile = file.getName();
+            filepathtext = file.getAbsolutePath().replace("\\", "\\\\");
+            logoFile.setText(selectedFile);
+            extension = selectedFile.substring(selectedFile.lastIndexOf("."));
+            System.out.println(filepathtext);
+            System.out.println(selectedFile);
+            System.out.println(extension);
+
         }
     }
 
@@ -230,50 +247,10 @@ public class AddClubFXMLController implements Initializable {
         licenceRadio.setSelected(false);
 
     }
- 
-
-
- 
-
-    /*  @FXML
-    private void afficherPersonne(ActionEvent event) {
-        try {
-
-            String list = ps.afficherPersonnes().toString();
-
-            FXMLLoader root = new FXMLLoader(getClass().getResource("./AfficherPersonneFXML.fxml"));
-
-            Parent parent = root.load();
-            
-            AfficherPersonneFXMLController apc = root.getController();
-            
-            apc.setLbAfficher(list);
-
-            //Lancement dans une nouvelle fenetre
-//            Scene scene = new Scene(parent);
-//            
-//            Stage st = new Stage();
-//            
-//            st.setScene(scene);
-//            
-//            st.show();
-            
-            //Lancement dans la fenetre actuelle
-            tfNom.getScene().setRoot(parent);
-                       
-            
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-  } */
 
     @FXML
     private void closeCurrent(MouseEvent event) {
         CreateClubPane.setVisible(false);
     }
 
-
-   
 }

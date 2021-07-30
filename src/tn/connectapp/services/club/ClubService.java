@@ -136,11 +136,13 @@ public class ClubService {
         return clubs;
     }
 
-    public Club ReadClub(Long idClub) throws SQLException {
+    public Club ReadClub(Long idClub,String name) throws SQLException {
         Club club = new Club();
             String sql = "SELECT c.*,(select concat(u.FirstName,' ',u.LastName)"
-                    + " From user u where c.creation_user = u.id_user) user_name FROM CLUB c WHERE id_club = " + idClub + ";";
-            Statement ste = cnx.createStatement();
+                    + " From user u where c.creation_user = u.id_user) user_name FROM CLUB c WHERE id_club = " + idClub + ""
+                    + " Or name = '"+ name + "';";
+            System.out.println(sql);
+           Statement ste = cnx.createStatement();
             ResultSet rs = ste.executeQuery(sql);
             if (rs.first()) {
                 club.setIdClub(rs.getLong("id_club"));

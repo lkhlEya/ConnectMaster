@@ -9,6 +9,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.sql.Date;
+import java.util.Optional;
 import java.util.regex.Pattern;
 import javafx.scene.control.Alert;
 
@@ -123,5 +124,11 @@ public class InputControl {
         return alert;
         
     }
+    
+    public static Optional<String> getExtensionByStringHandling(String filename) {
+    return Optional.ofNullable(filename)
+      .filter(f -> f.contains("."))
+      .map(f -> f.substring(filename.lastIndexOf(".") + 1));
+}
     
 }
