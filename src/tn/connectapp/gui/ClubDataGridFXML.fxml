@@ -109,6 +109,7 @@
             <MenuItem fx:id="AcceptAction" mnemonicParsing="false" onAction="#acceptList" text="Accept" />
             <MenuItem fx:id="RejectAction" mnemonicParsing="false" onAction="#rejectList" text="Reject" />
             <MenuItem fx:id="Activateaction" mnemonicParsing="false" onAction="#activeList" text="Activate" />
+            <MenuItem fx:id="AddClub" mnemonicParsing="false" onAction="#AddClub" text="Add Club" />
         </items>
          <font>
             <Font size="22.0" />
