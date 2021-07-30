@@ -1,4 +1,4 @@
-package tn.connectapp.entities.Offer;
+package tn.connectapp.entities.offer;
 
 import java.sql.Date;
 

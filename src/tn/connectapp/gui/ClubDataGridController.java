@@ -174,6 +174,8 @@ public class ClubDataGridController implements Initializable {
 
     public ObservableList<Club> clubList = FXCollections.observableArrayList();
     User currentUser;
+    @FXML
+    private MenuItem AddClub;
 
     void setStatus(ActionEvent event) {
 
@@ -442,7 +444,7 @@ public class ClubDataGridController implements Initializable {
             Activateaction.setVisible(false);*/
 
         } else if (archive.isSelected()) {
-            status = "ETUD";
+            status = "HEXP";
             /*     AcceptAction.setVisible(true);
             RejectAction.setVisible(true);
             updateaction.setVisible(true);
@@ -526,6 +528,10 @@ public class ClubDataGridController implements Initializable {
 
     void getUserData(User currrentUser) {
         currentUser = new User(currrentUser);
+    }
+
+    @FXML
+    private void AddClub(ActionEvent event) {
     }
 
 }

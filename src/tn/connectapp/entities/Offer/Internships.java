@@ -1,6 +1,7 @@
 package tn.connectapp.entities.Offer;
 
 import java.sql.Date;
+import tn.connectapp.entities.offer.Offer;
 
 /**
  *

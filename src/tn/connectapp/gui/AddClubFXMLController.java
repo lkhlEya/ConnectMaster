@@ -195,7 +195,7 @@ public class AddClubFXMLController implements Initializable {
                     System.out.println(filepathtext);
                     System.out.println(extension);
                     ftpUploader = new FTPUploader();
-                    ftpUploader.ftpUpload(filepathtext,  clubid+ extension);
+                    ftpUploader.ftpUpload(filepathtext,clubid+ extension);
                 } catch (SQLException ex) {
                     Logger.getLogger(AddClubFXMLController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Exception ex) {
